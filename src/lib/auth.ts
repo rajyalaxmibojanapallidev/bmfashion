@@ -1,7 +1,7 @@
 // src/lib/auth.ts
 import api from './api';
 import Cookies from 'js-cookie';
-import { AuthResponse, LoginCredentials, RegisterCredentials, User } from '@/types';
+import { AuthResponse, LoginCredentials, RegisterCredentials, User } from '../types/index';
 
 export const authApi = {
   // Register
