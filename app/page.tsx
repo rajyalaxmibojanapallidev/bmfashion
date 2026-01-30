@@ -1,4 +1,54 @@
+import UserMenu from "@/src/components/userMenu";
 import Image from "next/image";
+const categories = [
+  {
+    title: "Women",
+    subtitle: "New Season",
+    image:
+      "https://i.pinimg.com/736x/08/8d/bc/088dbc46e4619563725e0cfae326752a.jpg",
+  },
+  {
+    title: "Men",
+    subtitle: "Essentials",
+    image:
+      "https://i.pinimg.com/736x/77/63/da/7763da984a2dccc4b3a553af25cfb8f2.jpg",
+  },
+  {
+    title: "Accessories",
+    subtitle: "Complete the Look",
+    image:
+      "https://i.pinimg.com/736x/3e/e7/6a/3ee76aa8c14b732e465293192b6e6828.jpg",
+  },
+];
+
+
+const products = [
+  {
+    name: "Linen Blend Blazer",
+    price: "$189",
+    color: "Ivory",
+    image: "https://i.pinimg.com/736x/0e/5d/f4/0e5df4e59fb5333d4c94a2a4cf7c07d4.jpg",
+  },
+  {
+    name: "Relaxed Silk Shirt",
+    price: "$145",
+    color: "Midnight",
+    image: "https://i.pinimg.com/1200x/7a/d9/d7/7ad9d7132056b5e2b6bda7df2789bed8.jpg",
+  },
+  {
+    name: "High-Rise Trousers",
+    price: "$125",
+    color: "Camel",
+    image: "https://i.pinimg.com/1200x/13/7a/90/137a907ce8b4c435906b397c6a8ef39e.jpg",
+  },
+  {
+    name: "Cashmere Knit Vest",
+    price: "$210",
+    color: "Oat",
+    image: "https://i.pinimg.com/1200x/46/2b/0b/462b0bb5c5a23a39f7d2da2e458813ab.jpg",
+  },
+];
+
 
 export default function Home() {
   return (
@@ -32,22 +82,18 @@ export default function Home() {
               </a>
             </div>
           </div>
-          
+
           <a href="/" className="absolute left-1/2 -translate-x-1/2 text-2xl font-light uppercase tracking-[0.3em] text-zinc-900 dark:text-white">
-            Atelier
+            BMFASHIONS
           </a>
-          
+
           <div className="flex items-center gap-5">
             <button className="hidden text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white md:block">
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
-            <a href="#" className="hidden text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white md:block">
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </a>
+            <UserMenu />
             <button className="relative text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -62,16 +108,32 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative h-[90vh] min-h-[600px] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+
+        {/* Background image */}
+        <img
+          src="https://i.pinimg.com/1200x/25/45/e7/2545e7252e6ae24ba0588acea7b721e3.jpg"
+          alt="Hero background"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+
+        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
-        <div className="absolute inset-0 flex items-center justify-center">
+
+        {/* Content */}
+        <div className="relative z-10 flex h-full items-center justify-center">
           <div className="text-center text-white">
-            <p className="mb-4 text-sm uppercase tracking-[0.3em] opacity-90">Spring/Summer 2024</p>
+            <p className="mb-4 text-sm uppercase tracking-[0.3em] font-bold">
+              Spring/Summer 2026
+            </p>
+
             <h1 className="mb-6 text-5xl font-light uppercase tracking-wide md:text-7xl lg:text-8xl">
               New Beginnings
             </h1>
+
             <p className="mx-auto mb-8 max-w-md text-lg font-light opacity-90">
               Discover our latest collection inspired by the beauty of renewal
             </p>
+
             <a
               href="#"
               className="inline-block border border-white bg-white px-10 py-4 text-sm uppercase tracking-widest text-zinc-900 transition-all hover:bg-transparent hover:text-white"
@@ -80,25 +142,31 @@ export default function Home() {
             </a>
           </div>
         </div>
-        {/* Placeholder for hero image */}
-        <div className="h-full w-full bg-gradient-to-br from-zinc-400 to-zinc-600 dark:from-zinc-700 dark:to-zinc-900" />
+
       </section>
+
 
       {/* Category Grid */}
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {[
-            { title: "Women", subtitle: "New Season" },
-            { title: "Men", subtitle: "Essentials" },
-            { title: "Accessories", subtitle: "Complete the Look" },
-          ].map((category, index) => (
+          {categories.map((category, index) => (
             <a
               key={index}
               href="#"
               className="group relative aspect-[3/4] overflow-hidden bg-zinc-100 dark:bg-zinc-900"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0" />
-              <div className="absolute bottom-0 left-0 p-8">
+              {/* Image */}
+              <img
+                src={category.image}
+                alt={category.title}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/0" />
+
+              {/* Text */}
+              <div className="relative z-10 absolute bottom-0 left-0 p-8">
                 <p className="mb-1 text-sm uppercase tracking-wider text-white/80">
                   {category.subtitle}
                 </p>
@@ -109,12 +177,11 @@ export default function Home() {
                   Shop Now
                 </span>
               </div>
-              {/* Placeholder image */}
-              <div className="h-full w-full bg-gradient-to-br from-zinc-300 to-zinc-500 transition-transform duration-700 group-hover:scale-105 dark:from-zinc-600 dark:to-zinc-800" />
             </a>
           ))}
         </div>
       </section>
+
 
       {/* New Arrivals */}
       <section className="mx-auto max-w-7xl px-6 py-16">
@@ -133,12 +200,7 @@ export default function Home() {
           </a>
         </div>
         <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
-          {[
-            { name: "Linen Blend Blazer", price: "$189", color: "Ivory" },
-            { name: "Relaxed Silk Shirt", price: "$145", color: "Midnight" },
-            { name: "High-Rise Trousers", price: "$125", color: "Camel" },
-            { name: "Cashmere Knit Vest", price: "$210", color: "Oat" },
-          ].map((product, index) => (
+          {products.map((product, index) => (
             <a key={index} href="#" className="group">
               <div className="relative mb-4 aspect-[3/4] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
                 <div className="absolute right-3 top-3 z-10">
@@ -154,7 +216,11 @@ export default function Home() {
                   </span>
                 )}
                 {/* Placeholder image */}
-                <div className="h-full w-full bg-gradient-to-br from-zinc-200 to-zinc-400 transition-transform duration-500 group-hover:scale-105 dark:from-zinc-700 dark:to-zinc-800" />
+<img
+  src={product.image}
+  alt={product.name}
+  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+/>
               </div>
               <h3 className="mb-1 text-sm font-medium text-zinc-900 dark:text-white">
                 {product.name}
@@ -178,17 +244,22 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-6 py-16">
         <div className="relative overflow-hidden bg-zinc-100 dark:bg-zinc-900">
           <div className="grid lg:grid-cols-2">
+
+            {/* Text */}
             <div className="flex flex-col justify-center p-10 md:p-16 lg:p-20">
               <p className="mb-4 text-sm uppercase tracking-widest text-zinc-500">
                 Limited Edition
               </p>
+
               <h2 className="mb-4 text-3xl font-light uppercase tracking-wide text-zinc-900 dark:text-white md:text-5xl">
                 The Capsule Collection
               </h2>
+
               <p className="mb-8 max-w-md text-zinc-600 dark:text-zinc-400">
-                Timeless pieces designed for the modern wardrobe. Crafted from premium 
+                Timeless pieces designed for the modern wardrobe. Crafted from premium
                 sustainable materials with meticulous attention to detail.
               </p>
+
               <div>
                 <a
                   href="#"
@@ -198,10 +269,20 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            <div className="aspect-square bg-gradient-to-br from-zinc-300 to-zinc-500 lg:aspect-auto dark:from-zinc-600 dark:to-zinc-800" />
+
+            {/* Image */}
+            <div className="relative h-[400px] md:h-[500px] lg:h-auto">
+              <img
+                src="https://i.pinimg.com/736x/f3/f1/f6/f3f1f6803c95db5350ce443ad6b670c9.jpg"
+                alt="Capsule Collection"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
+
           </div>
         </div>
       </section>
+
 
       {/* Brand Values */}
       <section className="border-y border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/50">
@@ -394,3 +475,5 @@ export default function Home() {
     </div>
   );
 }
+
+
